@@ -21,11 +21,11 @@ The Spider Protocol is a decentralized, non-custodial social media platform buil
 ## Development
 
 - Setup Instructions:
-Clone the project repository from GitHub.
-Install the required dependencies.
-Set up the environment file with necessary configuration parameters (.env.example).
-Build and deploy the smart contracts to the desired network.
-`forge script script/Spider.s.sol:SpiderDeployScript --broadcast --verify -vvvv`
+  - Clone the project repository from GitHub.
+  - Install the required dependencies.
+  - Set up the environment file with necessary configuration parameters (.env.example).
+  - Build and deploy the smart contracts to the desired network.
+  - `forge script script/Spider.s.sol:SpiderDeployScript --broadcast --verify -vvvv`
 
 ## Testing
 - TODO
