@@ -28,24 +28,26 @@ The Spider Protocol is a decentralized, non-custodial social media platform buil
   - `forge script script/Spider.s.sol:SpiderDeployScript --broadcast --verify -vvvv`
 
 ## Testing
+- UUPSProxy
+  - Initialize
+  - Upgrade
+### profile
+- ProfileCreatorWhitelist
+  - profileCreatorWhitelist
+  - notOperator ProfileCreatorWhitelist
+- ProfileCreation
+  - createProfileWithHandleOver
+  - createProfileWithHandleEmpty
+  - createProfileWithHandleContainCapital
+  - createProfileWithHandleContainInvalid
+  - createProfileWithImageUriInvalidLength
+  - createProfileWithNotWhitelisted
+  - createProfileWithExpectedId
+  - createProfileWithExpectedNft
+  - createProfileWithHandleContainSpecific
+  - createProfileWithHandleDuplicateFail
+  - createProfileForOther
 - TODO
 
 ## Usage
 - Using the Project: Users can interact with the Spider Protocol by creating profiles, publishing content, and commenting on posts. This can be done through interacting with the provided smart contract functions or using a user interface connected to the protocol.
-
-## Scoring Criteria
-- Completeness: 
-- Difficulty of Smart Contract Implementation: 
-- Novelty and Creativity: 
-- Application of Additional Knowledge and Learning Resources: 
-- Level of Effort: 
-
-## Suggestions
-- Prioritize Contract Implementation: 
-- Minimize Frontend/Backend Development Costs: 
-- Apply Knowledge Learned in Class: 
-- Ideal Implementation: 
-- Comprehensive Testing: 
-- Avoid Contract Vulnerabilities: 
-- Utilize Mentor's Resources: 
-- Incremental Commits: 

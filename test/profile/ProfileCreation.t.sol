@@ -142,7 +142,7 @@ contract ProfileCreationTest is Test, SpiderDeployScript {
         vm.stopPrank();
     }
 
-    function test_createProfile_with_expected_token_id() public {
+    function test_createProfile_with_expected_id() public {
         vm.startPrank(user);
         string memory val = "user";
         SpiderStruct.CreateProfileData memory createProfileData = SpiderStruct
