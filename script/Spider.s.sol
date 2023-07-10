@@ -33,7 +33,7 @@ contract SpiderDeployScript is Script {
         address(spiderProxy).call(
             abi.encodeWithSignature(
                 "initialize(bytes)",
-                abi.encode(address(this), address(governance), address(this))
+                abi.encode(address(this), address(spiderNFTProxy), address(this))
             )
         );
     }
