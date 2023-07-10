@@ -30,7 +30,9 @@ The Spider Protocol is a decentralized, non-custodial social media platform buil
       RCP_URL="YOUR RPC URL HERE"
     ```
   - Build and deploy the smart contracts to the desired network.
-  - `forge script script/Spider.s.sol:SpiderDeployScript --broadcast --verify -vvvv`
+    ```
+      forge script script/Spider.s.sol:SpiderDeployScript --broadcast --verify -vvvv
+    ```
 
 ## Testing
 - UUPSProxy
