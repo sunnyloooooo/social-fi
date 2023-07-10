@@ -31,7 +31,7 @@ The Spider Protocol is a decentralized, non-custodial social media platform buil
     ```
   - Build and deploy the smart contracts to the desired network.
     ```
-      forge script script/Spider.s.sol:SpiderDeployScript --broadcast --verify -vvvv
+      forge script script/Spider.s.sol:SpiderDeployScript --broadcast --verify -vvv
     ```
 
 ## Testing
