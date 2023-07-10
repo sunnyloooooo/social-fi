@@ -15,13 +15,14 @@ contract ImplementationV1Test is DSTest {
         // deploy proxy contract and point it to implementation
         proxy = new UUPSProxy(address(implV1), "");
         // initialize implementation contract
-        address(proxy).call(
+        (bool success, ) = address(proxy).call(
             abi.encodeWithSignature(
                 "initialize(string,string)",
                 "Spider NFT",
                 "SPIDER"
             )
         );
+        assertTrue(success);
     }
 
     function testInitialize() public {
@@ -36,7 +37,7 @@ contract ImplementationV1Test is DSTest {
 }
 
 contract SpiderNFTV2 is SpiderNFT {
-    function testUpgrade() public returns (bool) {
+    function testUpgrade() public pure returns (bool) {
         return true;
     }
 }
@@ -52,19 +53,22 @@ contract ImplementationV2Test is DSTest {
         // deploy proxy contract and point it to implementation
         proxy = new UUPSProxy(address(implV1), "");
         // initialize implementation contract
-        address(proxy).call(
+        (bool success, ) = address(proxy).call(
             abi.encodeWithSignature(
                 "initialize(string,string)",
                 "Spider NFT",
                 "SPIDER"
             )
         );
+        assertTrue(success);
+
         // deploy new logic contract
         implV2 = new SpiderNFTV2();
         // update proxy to new implementation contract
-        (bool a, bytes memory data) = address(proxy).call(
+        (bool s, ) = address(proxy).call(
             abi.encodeWithSignature("upgradeTo(address)", address(implV2))
         );
+        assertTrue(s);
     }
 
     function testUpgrade() public {
@@ -72,12 +76,15 @@ contract ImplementationV2Test is DSTest {
         (bool s, bytes memory data) = address(proxy).call(
             abi.encodeWithSignature("name()")
         );
+        assertTrue(s);
         string memory name = abi.decode(data, (string));
         assertEq(name, "Spider NFT");
 
         (bool a, bytes memory returnedData) = address(proxy).call(
             abi.encodeWithSignature("testUpgrade()")
         );
+        assertTrue(a);
+
         bool testReturn = abi.decode(returnedData, (bool));
         assertTrue(testReturn);
     }
