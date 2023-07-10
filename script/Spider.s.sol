@@ -8,13 +8,20 @@ import {SpiderNFT} from "../contracts/SpiderNFT.sol";
 import {UUPSProxy} from "../contracts/UUPSProxy.sol";
 
 contract SpiderDeployScript is Script {
+    Governance governance;
+    SpiderNFT spiderNFT;
+    Spider spider;
+    UUPSProxy governanceProxy;
+    UUPSProxy spiderNFTProxy;
+    UUPSProxy spiderProxy;
+
     function deploy() public {
-        Governance governance = new Governance();
-        SpiderNFT spiderNFT = new SpiderNFT();
-        Spider spider = new Spider();
-        UUPSProxy governanceProxy = new UUPSProxy(address(governance), "");
-        UUPSProxy spiderNFTProxy = new UUPSProxy(address(spiderNFT), "");
-        UUPSProxy spiderProxy = new UUPSProxy(address(spider), "");
+        governance = new Governance();
+        spiderNFT = new SpiderNFT();
+        spider = new Spider();
+        governanceProxy = new UUPSProxy(address(governance), "");
+        spiderNFTProxy = new UUPSProxy(address(spiderNFT), "");
+        spiderProxy = new UUPSProxy(address(spider), "");
 
         address(governanceProxy).call(
             abi.encodeWithSignature(
@@ -33,14 +40,17 @@ contract SpiderDeployScript is Script {
         address(spiderProxy).call(
             abi.encodeWithSignature(
                 "initialize(bytes)",
-                abi.encode(address(this), address(spiderNFTProxy), address(this))
+                abi.encode(
+                    address(this),
+                    address(governanceProxy),
+                    address(spiderNFTProxy)
+                )
             )
         );
     }
 
     function run() external {
-        vm.startBroadcast();
-        // vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
+        vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
         deploy();
         vm.stopBroadcast();
     }

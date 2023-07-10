@@ -2,8 +2,8 @@
 pragma solidity ^0.8.0;
 
 import "forge-std/Test.sol";
-import "../contracts/Governance.sol";
-import {UUPSProxy} from "../contracts/UUPSProxy.sol";
+import "../../contracts/Governance.sol";
+import {UUPSProxy} from "../../contracts/UUPSProxy.sol";
 
 contract ProfileCreatorWhitelistTest is Test {
     address public operator;
@@ -26,7 +26,7 @@ contract ProfileCreatorWhitelistTest is Test {
         );
     }
 
-    function test_ProfileCreatorWhitelist() public {
+    function test_profileCreatorWhitelist() public {
         vm.startPrank(operator);
 
         (bool success, ) = address(governanceProxy).call(
@@ -51,7 +51,7 @@ contract ProfileCreatorWhitelistTest is Test {
         vm.stopPrank();
     }
 
-    function test_NotOperator_ProfileCreatorWhitelist_Fail() public {
+    function test_notOperator_profileCreatorWhitelist_fail() public {
         vm.startPrank(user);
 
         (bool success, ) = address(governanceProxy).call(
