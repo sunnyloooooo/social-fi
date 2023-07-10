@@ -25,7 +25,7 @@ contract ImplementationV1Test is DSTest {
         assertTrue(success);
     }
 
-    function testInitialize() public {
+    function test_Initialize() public {
         (bool success, bytes memory returnedData) = address(proxy).call(
             abi.encodeWithSignature("owner()")
         );
@@ -71,7 +71,7 @@ contract ImplementationV2Test is DSTest {
         assertTrue(s);
     }
 
-    function testUpgrade() public {
+    function test_Upgrade() public {
         // proxy points to implV2, but name set via impl should still be valid, since storage from proxy contract is read
         (bool s, bytes memory data) = address(proxy).call(
             abi.encodeWithSignature("name()")
