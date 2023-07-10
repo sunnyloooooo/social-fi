@@ -25,7 +25,7 @@ The Spider Protocol is a decentralized, non-custodial social media platform buil
   - Install the required dependencies.
   - Set up the environment file with necessary configuration parameters (.env.example).
     ```
-      PRIVATE_KEY="PRIVATE KEY OF WALLTER YOU WANT HERE"
+      PRIVATE_KEY="PRIVATE KEY OF WALLET YOU WANT HERE"
       ETHERSCAN_API_KEY="YOUR ETHERSCAN API KEY HERE"
       RCP_URL="YOUR RPC URL HERE"
     ```
